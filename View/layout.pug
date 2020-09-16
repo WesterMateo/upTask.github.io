@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        link(rel="stylesheet", href="css/app.css")
+        link(rel="stylesheet", href="css/normalize.css")
+        title #{nombrePagina}
+    body    
+        header.barra
+            a(href="/").enlacePersonal DashBoard - UpTask
+            a(href="#") Cerrar sesion
+        main.contenedor
+            aside.contenedor-proyectos
+                panel.crear-proyecto
+                    a(href="/nuevo_proyecto", class="boton").enlace Nueva tarea
+                        span +
+                h2.titulo Tareas creadas
+                panel.lista-proyectos
+                    ul#proyectos.proyectos
+                        li
+                            a(href="#").enlace Aprender NODE.JS
+                        li
+                            a(href="#").enlace Aprender ASP.NET 
+                        li
+                            a(href="#").enlace Aprender React
+                panel  
+            block Principal

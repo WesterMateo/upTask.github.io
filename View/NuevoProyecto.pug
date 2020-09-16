@@ -1,0 +1,11 @@
+extends layout
+
+block Principal
+    .contenido-principal
+        h1 #{nombrePagina}
+        form.agregar-proyecto
+            .campo
+                label(for="name") Task name:
+                input(type="text" name="name" placeholder="Task name")#name
+            .campo-enviar
+                input(type="submit" value="Create").boton
