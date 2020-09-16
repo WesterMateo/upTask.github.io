@@ -4,7 +4,7 @@ exports.ServicioController = (req,res) =>{
 
 exports.HomeController = (req,res) =>{
     return res.render('Index', {
-            nombrePagina: 'Home'
+            nombrePagina: 'Inicio'
     })
 }
 
@@ -13,8 +13,31 @@ exports.NosotrosController = (req,res) =>{
             nombrePagina: 'Nosotros'
     })
 }
-exports.NuevoProyectoController = (req,res) =>{
-    return res.render('NuevoProyecto',{
-            nombrePagina: 'Nuevo proyecto'
+exports.NuevaTareaController = (req,res) =>{
+    return res.render('NuevaTarea',{
+            nombrePagina: 'Nueva tarea'
     })
+}
+
+exports.NuevaTareaCreadaController = (req,res) =>{
+    console.log(req.body)
+    const { nombre } = req.body
+    let Errores = []
+
+    if (!nombre)
+    {
+        Errores.push({'Excepcion': 'Agrega el nombre de la tarea'})
+    }
+
+    if (Errores.length > 0)
+    {
+        return res.render('NuevaTarea',{
+            nombrePagina : 'Nueva tarea',
+            Errores
+        })
+    }else
+    {
+        return res.send('Datos enviados')
+    }
+    
 }

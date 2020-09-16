@@ -1,0 +1,15 @@
+extends layout
+
+block Principal
+    .contenido-principal
+        h1 #{nombrePagina}
+        if Errores
+            each Error in Errores
+                .alerta= Error.Excepcion
+
+        form(action="/nueva_tarea" method="POST").agregar-proyecto
+            .campo
+                label(for="nombre") Nombre de la tarea:
+                input(type="text" name="nombre" placeholder="Nombre")#name
+            .campo-enviar
+                input(type="submit" value="Crear").boton
