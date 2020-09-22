@@ -1,10 +1,13 @@
+const TareaModel = require('../Model/TareaModel')
 exports.ServicioController = (req,res) =>{
     return res.send(`Estas en la pagina de servicios`)
 }
 
-exports.HomeController = (req,res) =>{
+exports.HomeController = async (req,res) =>{
+    const tareas = await TareaModel.findAll()
     return res.render('Index', {
-            nombrePagina: 'Inicio'
+            nombrePagina: 'Inicio',
+            tareas
     })
 }
 
@@ -19,11 +22,10 @@ exports.NuevaTareaController = (req,res) =>{
     })
 }
 
-exports.NuevaTareaCreadaController = (req,res) =>{
-    console.log(req.body)
+exports.NuevaTareaCreadaController = async (req,res) =>{
     const { nombre } = req.body
     let Errores = []
-
+    let Exito = []
     if (!nombre)
     {
         Errores.push({'Excepcion': 'Agrega el nombre de la tarea'})
@@ -36,8 +38,15 @@ exports.NuevaTareaCreadaController = (req,res) =>{
             Errores
         })
     }else
-    {
-        return res.send('Datos enviados')
+    {      
+        await TareaModel.create({
+            Descripcion: nombre            
+        }).then(() => {Exito.push({'Msg': 'Datos guardados correctamente'})})
+        .catch((err) => {console.log(err)})
+         res.render('NuevaTarea',{
+            nombrePagina: 'Nueva tarea',
+            Exito
+         })
     }
     
 }

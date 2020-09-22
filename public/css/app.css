@@ -79,7 +79,7 @@ body {
     color: white;
 }
 .enlace {
-    padding-left: 2rem;
+    padding: 1rem;
     text-decoration:none;
     font-weight: 900;
     color: white;
@@ -262,7 +262,6 @@ body.index {
     font-weight: 900;
     max-width: 300px;
     margin: 0 auto 1rem auto;
-    text-transform: uppercase;
     color: rgb(255, 5, 5) ;
     background-color: rgba(253, 4, 4, 0.172) ;
 }
@@ -275,11 +274,23 @@ body.index {
     color: red!important;
 }
 .correcto {
+    padding: .5rem;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 900;
+    max-width: 300px;
+    margin: 0 auto 1rem auto;
     color: green;
     background-color: rgb(201, 245, 201);
     border: 1px solid green;
 }
 .correcto p {
+    padding: .5rem;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 900;
+    max-width: 300px;
+    margin: 0 auto 1rem auto;
     color: green;
 }
 

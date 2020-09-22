@@ -19,11 +19,8 @@ html(lang="en")
                 h2.titulo Tareas creadas
                 panel.lista-proyectos
                     ul#proyectos.proyectos
-                        li
-                            a(href="#").enlace Aprender NODE.JS
-                        li
-                            a(href="#").enlace Aprender ASP.NET 
-                        li
-                            a(href="#").enlace Aprender React
-                panel  
+                        if (tareas)
+                            each tarea in tareas
+                                li
+                                    a(href="#").enlace #{tarea.Descripcion}       
             block Principal

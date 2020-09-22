@@ -3,7 +3,13 @@ const  router  = require('./Router')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
+const db = require('./Config/DataBaseConection')
 
+require('./Model/TareaModel')
+//Conexion a BD
+db.sync()
+    .then(() =>{console.log('Conexion a base de datos correcta')})
+    .catch((err) =>{console.log(err)})
 
 //Agrego las carpeta con los archivos publicos
 app.use(express.static(path.join(__dirname, './public')))

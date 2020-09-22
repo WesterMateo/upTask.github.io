@@ -6,7 +6,9 @@ block Principal
         if Errores
             each Error in Errores
                 .alerta= Error.Excepcion
-
+        if Exito
+            each Msgs in Exito
+                .correcto= Msgs.Msg
         form(action="/nueva_tarea" method="POST").agregar-proyecto
             .campo
                 label(for="nombre") Nombre de la tarea:
