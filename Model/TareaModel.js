@@ -9,14 +9,14 @@ const Tarea = BDConection.define('Tarea',{
         primaryKey: true,
         autoIncrement: true
     },
-    Descripcion: Sequelize.STRING(60),
+    Descripcion: Sequelize.STRING(30),
     URL: Sequelize.STRING(60),
     Usuario: Sequelize.STRING(60)
 },
 {
     hooks:{ beforeCreate(Tarea) {
         Tarea.Usuario = os.hostname(),
-        Tarea.URL = `${slug(Tarea.Descripcion,"_")}_${shortid.generate()}`
+        Tarea.URL = `${slug(Tarea.Descripcion,"-")}-${shortid.generate()}`
         }
     }
 })

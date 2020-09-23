@@ -4,7 +4,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
 const db = require('./Config/DataBaseConection')
-
+const helpers = require('./helpers')
 require('./Model/TareaModel')
 //Conexion a BD
 db.sync()
@@ -19,6 +19,12 @@ app.set('view engine', 'pug')
 
 //Agrego las rutas para las vistas
 app.set('views', path.join(__dirname, './View'))
+
+//Pasar helpers
+app.use((req,res,next)=>{
+    res.locals.vardumb = helpers.vardumb
+    next()
+})
 
 //Agrego body-parser para leer los datos de los POST
 app.use(bodyParser.urlencoded({extended: true}))

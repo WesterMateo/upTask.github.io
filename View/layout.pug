@@ -4,23 +4,36 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        link(rel="stylesheet", href="css/app.css")
-        link(rel="stylesheet", href="css/normalize.css")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous")
         title #{nombrePagina}
     body    
-        header.barra
-            a(href="/").enlacePersonal Administración - Tarea
-            a(href="#") Cerrar sesión
-        main.contenedor
-            aside.contenedor-proyectos
-                panel.crear-proyecto
-                    a(href="/nueva_tarea", class="boton").enlace Nueva tarea
-                        span +
-                h2.titulo Tareas creadas
-                panel.lista-proyectos
-                    ul#proyectos.proyectos
-                        if (tareas)
-                            each tarea in tareas
-                                li
-                                    a(href="#").enlace #{tarea.Descripcion}       
-            block Principal
+        nav(class="navbar navbar-expand-lg navbar-light border" style="background-color: #e3f2fd;")
+            a(class="navbar-brand" href="/") 
+                h3 Administración - Tarea
+            button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation")
+                span(class="navbar-toggler-icon")         
+            div(class="collapse navbar-collapse" id="navbarTogglerDemo03" )
+                ul(class="navbar-nav mr-auto mt-2 mt-lg-0")
+                    //- li(class="nav-item")
+                    //-     a(class="nav-link" href="#") Administración - Tarea 
+                    //-     span(class="sr-only") (current)
+                    //- li(class="nav-item")
+                    //-     a(class="nav-link" href="#") Cerrar sesión
+        div(class="d-flex bd-highlight")
+            div(class="d-flex align-items-stretch float-left fixed")
+                div(class="jumbotron border bg-light" style="padding: 2rem 2rem;")
+                    panel
+                        a(href="/nueva_tarea", class="btn btn btn-primary btn-lg btn-block" style="margin-bottom: 2rem;")
+                            h4 Nueva tarea 
+                                span +
+                    h2 Tareas creadas
+                    panel
+                        div(class="list-group text-wrap")
+                            if (tareas)
+                                each tarea in tareas
+                                    a(href= `/tareas/${tarea.URL}`  class="list-group-item border-0 bg-light").enlace #{tarea.Descripcion} 
+            div(class="p-2 flex-fill bd-highlight")
+                block Principal                          
+        script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous")

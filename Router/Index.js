@@ -10,13 +10,14 @@ const { body } = require('express-validator/check')
 
 
 module.exports = ()=>{
-    router.get('/', ProyectoControllers.HomeController)
-    router.get('/servicio', ProyectoControllers.ServicioController)
-    router.get('/nosotros', ProyectoControllers.NosotrosController)
-    router.get('/nueva_tarea', ProyectoControllers.NuevaTareaController)
+    router.get('/', ProyectoControllers.GetHomeController)
+    router.get('/servicio', ProyectoControllers.GetServicioController)
+    router.get('/nosotros', ProyectoControllers.GetNosotrosController)
+    router.get('/nueva_tarea', ProyectoControllers.GetNuevaTareaController)
+    router.get('/tareas/:URL', ProyectoControllers.GetTareasController)
     //Parte de los POST
     router.post('/nueva_tarea',
         body('Descripcion').not().isEmpty().trim().escape(),
-        ProyectoControllers.NuevaTareaCreadaController)
+        ProyectoControllers.PostNuevaTareaController)
     return router
 }

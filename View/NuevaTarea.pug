@@ -1,17 +1,23 @@
 extends layout
 
 block Principal
-    .contenido-principal
-        h1 #{nombrePagina}
+    div(class="container-fluid")
+        h1(class="d-block p-2 text-center") #{nombrePagina}
         if Errores
             each Error in Errores
-                .alerta= Error.Excepcion
+                div(class="alert alert-danger alert-dismissible fade show text-center p-3 w-75 mx-auto" role="alert")
+                    strong= Error.Excepcion
+                    button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                        span(aria-hidden="true") &times;
         if Exito
             each Msgs in Exito
-                .correcto= Msgs.Msg
-        form(action="/nueva_tarea" method="POST").agregar-proyecto
-            .campo
-                label(for="nombre") Nombre de la tarea:
-                input(type="text" name="nombre" placeholder="Nombre")#name
-            .campo-enviar
-                input(type="submit" value="Crear").boton
+                div(class="alert alert-success alert-dismissible fade show text-center p-3 w-75 mx-auto" role="alert")
+                    strong= Msgs.Msg
+                    button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                        span(aria-hidden="true") &times; 
+        form(action="/nueva_tarea" method="POST" class="d-block p-3 w-75 border rounded mx-auto" style="background-color: #DDDDDD;")
+            div(class="form-group")
+                label(for="tareaNombre") Nombre de la tarea:
+                input(type="text" class="form-control" name="descripcion" placeholder="Nombre" id="tareaNombre")
+            div(class="text-right")
+                input(type="submit" class="btn btn-primary btn-sm mb-2" value="Crear")    
